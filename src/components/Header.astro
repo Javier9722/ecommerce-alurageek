@@ -1,0 +1,28 @@
+---
+import { Icon } from "astro-icon";
+import { transition as t } from "../ultilities/tailwind";
+import ThemeToggle from "./ThemeToggleButton";
+---
+
+<header class="w-full flex justify-between py-2">
+  <h1 class={`text-[2rem] text-slate-900 dark:text-slate-50 ${t}`}>
+    ViverosYa xd
+  </h1>
+  <div class="flex gap-4">
+    <button
+      class={`flex gap-1 px-2 items-center rounded-lg border-2 border-sky-900 bg-transparent dark:bg-sky-900 ${t}`}
+    >
+      <Icon name="noto:potted-plant" class="w-8" />
+      <span class={`text-sky-900 dark:text-sky-300 text-[1.2rem] ${t}`}
+        >Registra tu Vivero</span
+      >
+    </button>
+    <ThemeToggle client:load />
+  </div>
+</header>
+
+<style>
+  h1 {
+    font-family: "Fasthand", cursive;
+  }
+</style>
