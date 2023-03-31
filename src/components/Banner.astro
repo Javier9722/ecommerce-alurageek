@@ -3,14 +3,16 @@ import ImgBanner from "./headerItems/ImgBanner";
 import { transition as t } from "../ultilities/tailwind";
 ---
 
-<div class="flex w-full items-center gap-8 justify-center mb-4">
+<div
+  class="flex flex-col sm:flex-row w-full items-center gap-2 sm:gap-8 justify-center mb-4"
+>
   <ImgBanner client:load />
   <div>
     <h1
-      class={`max-w-[700px] text-slate-600 dark:text-slate-300 text-[2rem] ${t}`}
+      class={`max-w-[700px] text-slate-600 text-justify dark:text-slate-300 text-[1.4rem] sm:text-[2rem] ${t}`}
     >
       Haz de tu hogar un oasis verde con la gran variedad de plantas ofrecidas
-      por viveros en la ciudad de <span class="text-amber-600">Huancayo.</span>
+      por viveros en la ciudad de <span class="text-amber-600">Huancayo</span>.
     </h1>
   </div>
 </div>

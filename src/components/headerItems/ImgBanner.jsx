@@ -14,7 +14,7 @@ class App extends React.Component {
         loop={true}
         controls={true}
         src="https://assets7.lottiefiles.com/packages/lf20_o6hQ8m.json"
-        className="w-[300px] h-[300px] rounded-xl"
+        className="w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] rounded-xl"
       ></Player>
     );
   }

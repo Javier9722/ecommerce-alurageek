@@ -16,7 +16,7 @@ export const HomeApis = () => {
     setIsRender(true);
   }, []);
   return isRender ? (
-    <div className="grid gap-4">
+    <div className="w-[calc(100vw-32px)] 2xl:w-full grid gap-4">
       <Asociados data={data} />
       <Productos data={data} />
     </div>

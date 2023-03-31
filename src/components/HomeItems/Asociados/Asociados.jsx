@@ -9,13 +9,11 @@ export const Asociados = ({ data }) => {
     setIsRender(true);
   }, []);
   return isRender ? (
-    <div>
-      <h1
-        className={`font-bold text-[2rem] text-center dark:text-slate-300 ${t}`}
-      >
+    <div className={`w-[inherit] text-slate-600 dark:text-slate-300 ${t}`}>
+      <h1 className="font-bold text-[2rem] mb-2 text-center">
         Viveros Asociados
       </h1>
-      <div className="flex gap-6">
+      <div className="flex gap-4 overflow-x-auto">
         {data.length !== 0 ? (
           data.map((item) => {
             const rute = item.datos.name
