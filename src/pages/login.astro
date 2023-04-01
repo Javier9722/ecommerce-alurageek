@@ -1,0 +1,89 @@
+---
+import { Form } from "../components/Login/Form";
+import Layout2 from "../layouts/Layout2.astro";
+---
+
+<Layout2 title="Login">
+  <video
+    id="myVideo"
+    autoplay
+    muted
+    preload="auto"
+    style={{
+      position: "absolute",
+      top: "0",
+      left: "0",
+      width: "100vw",
+      height: "100vh",
+      "object-fit": "cover",
+      opacity: 0,
+    }}
+  >
+    <source src="./video/1080/video1.mp4" type="video/mp4" />
+    <source src="./video/1080/video2.mp4" type="video/mp4" />
+    <source src="./video/1080/video3.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute w-screen h-screen">
+    <div class="grid h-full place-items-center">
+      <Form client:load />
+    </div>
+  </div>
+</Layout2>
+
+<script>
+  const video: HTMLVideoElement = document.getElementById(
+    "myVideo"
+  ) as HTMLVideoElement;
+  const sources = video.getElementsByTagName("source");
+  const numSources = sources.length;
+  let i = 0;
+
+  video.style.opacity = String(0);
+
+  video.addEventListener("canplaythrough", function () {
+    // Aumentar gradualmente la opacidad del video a uno
+    let opacity = 0;
+    const timer = setInterval(function () {
+      opacity += 0.02;
+      video.style.opacity = String(opacity);
+      if (opacity >= 1) {
+        clearInterval(timer);
+      }
+    }, 50);
+  });
+
+  let contador = 0;
+
+  video.addEventListener("timeupdate", () => {
+    const currentTime = video.currentTime;
+    const duration = video.duration;
+    if (duration - currentTime <= 4) {
+      contador += 1;
+      endOpacity(contador);
+    } else {
+      contador = 0;
+    }
+  });
+
+  const endOpacity = (contador) => {
+    if (contador === 1) {
+      let opacity = 1;
+      const timer = setInterval(function () {
+        opacity -= 0.02;
+        video.style.opacity = String(opacity);
+        if (opacity <= 0) {
+          clearInterval(timer);
+        }
+      }, 50);
+    }
+  };
+
+  video.addEventListener("ended", function () {
+    i++;
+    if (i >= numSources) {
+      i = 0;
+    }
+    video.src = sources[i].src;
+    video.play();
+  });
+</script>
