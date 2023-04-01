@@ -11,9 +11,9 @@ export const Productos = ({ data }) => {
     setIsRender(true);
   }, []);
   return isRender ? (
-    <div className="w-[inherit] grid gap-4">
+    <div className="w-full px-4 lg:px-0 grid gap-4">
       <h1
-        className={`font-bold text-[2rem] text-center dark:text-slate-300 ${t}`}
+        className={`font-bold text-[2rem] text-center text-slate-600 dark:text-slate-300 ${t}`}
       >
         Productos
       </h1>

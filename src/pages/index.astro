@@ -4,10 +4,12 @@ import { HomeApis } from "../components/HomeApis";
 import Header from "../components/Header.astro";
 import Banner from "../components/Banner.astro";
 import { Other } from "../components/Other";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="ViverosYa">
   <Header />
   <Banner />
   <HomeApis client:load />
+  <Footer />
 </Layout>
