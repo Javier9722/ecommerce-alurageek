@@ -2,21 +2,17 @@
 import { Icon } from "astro-icon";
 import { transition as t } from "../ultilities/tailwind";
 import ThemeToggle from "./ThemeToggleButton";
+import { Perfil } from "./headerItems/Perfil";
 ---
 
-<header class="w-full flex justify-between items-center px-4 lg:px-0 pt-4 mb-2">
+<header
+  class="w-full flex justify-between items-center px-4 lg:px-0 pt-4 mb-2 relative"
+>
   <h1 class={`text-[2rem] text-slate-600 dark:text-slate-300 ${t}`}>
     ViverosYa xd
   </h1>
   <div class="flex gap-2 items-center">
-    <a class="cursor-pointer" href="/login">
-      <div
-        class={`flex gap-4 items-center text-slate-600 dark:text-slate-300 text-[1.2rem] ${t}`}
-      >
-        <i class={`fas fa-user-circle`}></i>
-        <span class="hidden sm:block">Ingreso</span>
-      </div>
-    </a>
+    <Perfil client:load />
     <ThemeToggle client:load />
   </div>
 </header>

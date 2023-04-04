@@ -1,10 +1,30 @@
 import React, { useEffect, useState } from "react";
+import { validLogin } from "../../../APIs/validate";
 
 export const Login = ({ setIsForm }) => {
   const [isRender, setIsRender] = useState(false);
+  const [message, setMessage] = useState(false);
   useEffect(() => {
     setIsRender(true);
   }, []);
+
+  const auth = async (e) => {
+    e.preventDefault();
+    const credentials = {
+      email: e.target[0].value,
+      password: e.target[1].value,
+    };
+    const result = await validLogin(credentials);
+
+    if (result) {
+      setMessage("Success");
+      setTimeout(() => {
+        window.location.replace("http://localhost:3000/");
+      }, 2000);
+    } else {
+      setMessage("Error, verifique sus credenciales");
+    }
+  };
 
   const regCliente = () => {
     setIsForm({
@@ -24,19 +44,19 @@ export const Login = ({ setIsForm }) => {
 
   return isRender ? (
     <>
-      <form className="">
+      <form onSubmit={auth}>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="username"
+            htmlFor="email"
           >
             Usuario
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            type="text"
-            placeholder="Nombre de usuario"
+            id="email"
+            type="email"
+            placeholder="Correo"
           />
         </div>
         <div className="mb-6">
@@ -53,6 +73,17 @@ export const Login = ({ setIsForm }) => {
             placeholder="******************"
           />
         </div>
+        {message ? (
+          <p
+            className={
+              message === "Success" ? "text-green-500" : "text-red-500"
+            }
+          >
+            {message}
+          </p>
+        ) : (
+          <></>
+        )}
         <div className="flex items-center gap-2 justify-between">
           <button
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

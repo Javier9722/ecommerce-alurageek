@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { crearVivero } from "../../../APIs/fetch";
 
 export const RegVivero = ({ setIsForm }) => {
   const [isRender, setIsRender] = useState(false);
@@ -13,6 +14,28 @@ export const RegVivero = ({ setIsForm }) => {
       vivero: false,
     });
   };
+
+  const newVivero = async (e) => {
+    e.preventDefault();
+    const viveroName = e.target[0].value;
+    const name = e.target[1].value;
+    const lname = e.target[2].value;
+    const phone = e.target[3].value;
+    const email = e.target[4].value;
+    const password = e.target[5].value;
+    const direction = e.target[6].value;
+
+    const data = {
+      name: viveroName,
+      direction: direction,
+      dueno: name + " " + lname,
+      email: email,
+      password: password,
+      celular: phone,
+    };
+    await crearVivero(data);
+  };
+
   return isRender ? (
     <>
       <div className="absolute top-5 left-4 ">
@@ -25,7 +48,7 @@ export const RegVivero = ({ setIsForm }) => {
       <h1 className="text-[1.5rem] font-bold text-center">
         Registra tu Vivero
       </h1>
-      <form>
+      <form onSubmit={newVivero}>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -99,6 +122,20 @@ export const RegVivero = ({ setIsForm }) => {
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="password"
+          >
+            Contraseña
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="password"
+            type="password"
+            placeholder="******"
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="direccion"
           >
             Dirección
@@ -112,7 +149,7 @@ export const RegVivero = ({ setIsForm }) => {
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
+            type="submit"
           >
             Registrarse
           </button>

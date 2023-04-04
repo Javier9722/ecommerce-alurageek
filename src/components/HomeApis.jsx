@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactLoading from "react-loading";
 import { Asociados } from "./HomeItems/Asociados/Asociados";
-import { getApi } from "../ultilities/fetch";
+import { getApi } from "../APIs/fetch";
 import { Productos } from "./HomeItems/Productos/Productos";
 
 export const HomeApis = () => {

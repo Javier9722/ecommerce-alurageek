@@ -1,0 +1,11 @@
+---
+import { ValidateAdmin } from "../../components/admin/ValidateAdmin";
+import Layout from "../../layouts/Layout.astro";
+
+const { name } = Astro.params;
+const newName = name.replace(/-/g, " ");
+---
+
+<Layout title={newName}>
+  <ValidateAdmin client:only />
+</Layout>
