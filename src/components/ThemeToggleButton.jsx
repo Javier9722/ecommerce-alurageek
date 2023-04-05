@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 
 const themes = ["light", "dark"];
 
-export default function ThemeToggle() {
+export default function ThemeToggle({
+  themeParent: [themeParent, setThemeParent] = ["", () => {}],
+}) {
   const [isMounted, setIsMounted] = useState(false);
   const [theme, setTheme] = useState(() => {
     // este SSR es variable de entorno
@@ -21,6 +23,7 @@ export default function ThemeToggle() {
     const t = theme === "light" ? "dark" : "light";
     localStorage.setItem("theme", t);
     setTheme(t);
+    setThemeParent(t);
   };
 
   useEffect(() => {
