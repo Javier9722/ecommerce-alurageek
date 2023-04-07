@@ -1,4 +1,4 @@
-import { fixData } from "./fix";
+import { fixCreateData } from "./fix";
 
 const url = "http://localhost:3001/viveros";
 
@@ -9,7 +9,7 @@ export const getApi = async () => {
 };
 
 export const crearVivero = async (data) => {
-  const newData = fixData(data);
+  const newData = fixCreateData(data);
 
   const options = {
     method: "POST",
@@ -20,6 +20,25 @@ export const crearVivero = async (data) => {
     const response = await fetch(url, options);
     const result = await response.json();
     console.log(result);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const editVivero = async (data, id) => {
+  const dynamicUrl = `http://localhost:3001/viveros/${id}`;
+  const options = {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  };
+  try {
+    const response = await fetch(dynamicUrl, options);
+    const result = await response.json();
+    console.log(result);
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   } catch (e) {
     console.log(e);
   }

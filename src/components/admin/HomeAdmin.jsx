@@ -9,8 +9,8 @@ export const HomeAdmin = ({ id }) => {
   const [isRender, setIsRender] = useState(false);
   const [dataVivero, setDataVivero] = useState([{}]);
   const [visibleItems, setVisibleItems] = useState({
-    perfil: false,
-    products: true,
+    perfil: true,
+    products: false,
   });
   useEffect(() => {
     const viveros = async () => {
@@ -27,8 +27,8 @@ export const HomeAdmin = ({ id }) => {
   return isRender ? (
     <div className="px-2 sm:px-0">
       <HeaderAdmin dataVivero={dataVivero} setVisibleItems={setVisibleItems} />
+      {visibleItems.perfil ? <PerfilAdmin dataVivero={dataVivero} /> : <></>}
       {visibleItems.products ? <ProductsAdmin /> : <></>}
-      {visibleItems.perfil ? <PerfilAdmin /> : <></>}
     </div>
   ) : (
     <div className="w-full h-screen grid place-items-center">

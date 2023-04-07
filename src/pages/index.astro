@@ -8,8 +8,10 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="ViverosYa">
-  <Header />
-  <Banner />
-  <HomeApis client:load />
-  <Footer />
+  <div class="container mx-auto">
+    <Header />
+    <Banner />
+    <HomeApis client:load />
+    <Footer />
+  </div>
 </Layout>
