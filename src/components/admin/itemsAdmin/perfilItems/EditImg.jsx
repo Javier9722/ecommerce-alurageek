@@ -1,25 +1,23 @@
 import React from "react";
 import { editVivero } from "../../../../APIs/fetch";
 
-export const EditImg = ({ setFormView, resVivero }) => {
+export const EditImg = ({ id, setFormView, datos }) => {
   const edit = (e) => {
     e.preventDefault();
-    const url = new URL(window.location.href).searchParams;
-    const urlid = Number(url.get("id"));
     const data = {
       datos: {
-        name: resVivero.name,
-        description: resVivero.description,
-        direction: resVivero.direction,
-        referencia: resVivero.referencia,
+        name: datos.name,
+        description: datos.description,
+        direction: datos.direction,
+        referencia: datos.referencia,
         img: e.target[0].value,
-        dueno: resVivero.dueno,
-        email: resVivero.email,
-        celular: resVivero.celular,
-        password: resVivero.password,
+        dueno: datos.dueno,
+        email: datos.email,
+        celular: datos.celular,
+        password: datos.password,
       },
     };
-    editVivero(data, urlid);
+    editVivero(data, id);
   };
   const cancelButton = () => {
     setFormView({
@@ -44,7 +42,7 @@ export const EditImg = ({ setFormView, resVivero }) => {
               id="nombre_vivero"
               type="text"
               placeholder="Logo de la empresa"
-              defaultValue={resVivero.img}
+              defaultValue={datos.img}
             />
           </div>
 

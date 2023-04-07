@@ -4,21 +4,20 @@ import { AtributePerfil } from "./perfilItems/AtributePerfil";
 import { EditPerfil } from "./perfilItems/EditPerfil";
 import { EditImg } from "./perfilItems/EditImg";
 
-export const PerfilAdmin = ({ dataVivero }) => {
-  const [imagen, setImagen] = useState(dataVivero.datos.img);
+export const PerfilAdmin = ({ id, datos }) => {
+  const [imagen, setImagen] = useState(datos.img);
   const [formView, setFormView] = useState({
     perfil: false,
     img: false,
   });
-  let resVivero = dataVivero.datos;
   let arrInfo = [
-    { key: "Nombre", info: resVivero.name },
-    { key: "Descripción", info: resVivero.description },
-    { key: "Dirección", info: resVivero.direction },
-    { key: "Referencia", info: resVivero.referencia },
-    { key: "Dueño", info: resVivero.dueno },
-    { key: "Correo", info: resVivero.email },
-    { key: "Celular", info: resVivero.celular },
+    { key: "Nombre", info: datos.name },
+    { key: "Descripción", info: datos.description },
+    { key: "Dirección", info: datos.direction },
+    { key: "Referencia", info: datos.referencia },
+    { key: "Dueño", info: datos.dueno },
+    { key: "Correo", info: datos.email },
+    { key: "Celular", info: datos.celular },
   ];
   let defaultIMG =
     "https://images.pexels.com/photos/4913769/pexels-photo-4913769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
@@ -73,12 +72,12 @@ export const PerfilAdmin = ({ dataVivero }) => {
         </button>
       </div>
       {formView.img ? (
-        <EditImg setFormView={setFormView} resVivero={resVivero} />
+        <EditImg id={id} setFormView={setFormView} datos={datos} />
       ) : (
         <></>
       )}
       {formView.perfil ? (
-        <EditPerfil setFormView={setFormView} resVivero={resVivero} />
+        <EditPerfil id={id} setFormView={setFormView} datos={datos} />
       ) : (
         <></>
       )}

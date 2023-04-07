@@ -1,25 +1,24 @@
 import React from "react";
 import { editVivero } from "../../../../APIs/fetch";
 
-export const EditPerfil = ({ setFormView, resVivero }) => {
+export const EditPerfil = ({ id, setFormView, datos }) => {
   const edit = (e) => {
     e.preventDefault();
-    const url = new URL(window.location.href).searchParams;
-    const urlid = Number(url.get("id"));
+
     const data = {
       datos: {
         name: e.target[0].value,
         description: e.target[1].value,
         direction: e.target[2].value,
         referencia: e.target[3].value,
-        img: resVivero.img,
+        img: datos.img,
         dueno: e.target[4].value,
         email: e.target[5].value,
         celular: e.target[6].value,
-        password: resVivero.password,
+        password: datos.password,
       },
     };
-    editVivero(data, urlid);
+    editVivero(data, id);
   };
   const cancelButton = () => {
     setFormView(false);
@@ -41,7 +40,7 @@ export const EditPerfil = ({ setFormView, resVivero }) => {
               id="nombre_vivero"
               type="text"
               placeholder="Nombre del Vivero"
-              defaultValue={resVivero.name}
+              defaultValue={datos.name}
             />
           </div>
           <div className="mb-4">
@@ -55,7 +54,7 @@ export const EditPerfil = ({ setFormView, resVivero }) => {
               className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
               id="description"
               placeholder="Nombre"
-              defaultValue={resVivero.description}
+              defaultValue={datos.description}
             />
           </div>
           <div className="mb-4">
@@ -70,7 +69,7 @@ export const EditPerfil = ({ setFormView, resVivero }) => {
               id="direction"
               type="text"
               placeholder="Dirección"
-              defaultValue={resVivero.direction}
+              defaultValue={datos.direction}
             />
           </div>
           <div className="mb-4">
@@ -85,7 +84,7 @@ export const EditPerfil = ({ setFormView, resVivero }) => {
               id="referencia"
               type="text"
               placeholder="Referencia"
-              defaultValue={resVivero.referencia}
+              defaultValue={datos.referencia}
             />
           </div>
           <div className="mb-4">
@@ -100,7 +99,7 @@ export const EditPerfil = ({ setFormView, resVivero }) => {
               id="dueno"
               type="text"
               placeholder="name"
-              defaultValue={resVivero.dueno}
+              defaultValue={datos.dueno}
             />
           </div>
           <div className="mb-4">
@@ -115,7 +114,7 @@ export const EditPerfil = ({ setFormView, resVivero }) => {
               id="email"
               type="email"
               placeholder="Correo Electronico"
-              defaultValue={resVivero.email}
+              defaultValue={datos.email}
             ></input>
           </div>
           <div className="mb-4">
@@ -130,7 +129,7 @@ export const EditPerfil = ({ setFormView, resVivero }) => {
               id="celular"
               type="text"
               placeholder="Numero de Contacto"
-              defaultValue={resVivero.celular}
+              defaultValue={datos.celular}
               pattern="[0-9]{9}"
               maxLength="9"
             ></input>
