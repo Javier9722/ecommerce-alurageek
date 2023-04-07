@@ -10,6 +10,11 @@ export const HeaderAdmin = ({ dataVivero, setVisibleItems }) => {
     setMenuMovil(menuMovil === true ? false : true);
   };
 
+  const unlogged = () => {
+    localStorage.removeItem("status");
+    window.location.replace("http://localhost:3000/");
+  };
+
   const renderPerfil = () => {
     setVisibleItems({ perfil: true, products: false });
     setMenuMovil(false);
@@ -24,7 +29,7 @@ export const HeaderAdmin = ({ dataVivero, setVisibleItems }) => {
       <div className="flex gap-2 items-center">
         <ThemeToggle themeParent={[themeParent, setThemeParent]} />
         <h1 className={`text-slate-600 dark:text-slate-300 text-[1.3rem] ${t}`}>
-          {dataVivero[0].datos.name}
+          {dataVivero.datos.name}
         </h1>
       </div>
 
@@ -66,7 +71,10 @@ export const HeaderAdmin = ({ dataVivero, setVisibleItems }) => {
               Productos
             </li>
           </ul>
-          <button className={`text-red-600  hover:text-red-700 font-bold`}>
+          <button
+            className={`text-red-600  hover:text-red-700 font-bold`}
+            onClick={unlogged}
+          >
             Cerrar Sesion
           </button>
         </div>
@@ -94,6 +102,7 @@ export const HeaderAdmin = ({ dataVivero, setVisibleItems }) => {
         </ul>
         <button
           className={`border-2 border-red-700 rounded-xl py-1 px-2 text-red-700 font-bold hover:bg-red-700 hover:text-slate-300 ${h}`}
+          onClick={unlogged}
         >
           Cerrar Sesion
         </button>

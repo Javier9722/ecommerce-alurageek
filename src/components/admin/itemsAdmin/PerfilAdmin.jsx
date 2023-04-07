@@ -5,12 +5,12 @@ import { EditPerfil } from "./perfilItems/EditPerfil";
 import { EditImg } from "./perfilItems/EditImg";
 
 export const PerfilAdmin = ({ dataVivero }) => {
-  const [imagen, setImagen] = useState(dataVivero[0].datos.img);
+  const [imagen, setImagen] = useState(dataVivero.datos.img);
   const [formView, setFormView] = useState({
     perfil: false,
     img: false,
   });
-  let resVivero = dataVivero[0].datos;
+  let resVivero = dataVivero.datos;
   let arrInfo = [
     { key: "Nombre", info: resVivero.name },
     { key: "Descripción", info: resVivero.description },

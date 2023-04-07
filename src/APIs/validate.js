@@ -11,9 +11,7 @@ export const validLogin = async ({ email, password }) => {
   if (result.length === 1) {
     const dataStorage = {
       id: result[0].id,
-      datos: result[0].datos,
     };
-    console.log(dataStorage);
     localStorage.setItem("status", JSON.stringify(dataStorage));
   }
   return result.length === 1 ? true : false;

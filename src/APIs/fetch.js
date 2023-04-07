@@ -7,6 +7,12 @@ export const getApi = async () => {
   const data = await response.json();
   return data;
 };
+export const getOneApi = async (id) => {
+  const dynamicUrl = `http://localhost:3001/viveros/${id}`;
+  const response = await fetch(dynamicUrl);
+  const data = await response.json();
+  return data;
+};
 
 export const crearVivero = async (data) => {
   const newData = fixCreateData(data);

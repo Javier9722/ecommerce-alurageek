@@ -16,6 +16,7 @@ export const EditImg = ({ setFormView, resVivero }) => {
         dueno: resVivero.dueno,
         email: resVivero.email,
         celular: resVivero.celular,
+        password: resVivero.password,
       },
     };
     editVivero(data, urlid);

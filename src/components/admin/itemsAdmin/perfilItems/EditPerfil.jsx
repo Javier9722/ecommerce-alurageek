@@ -16,6 +16,7 @@ export const EditPerfil = ({ setFormView, resVivero }) => {
         dueno: e.target[4].value,
         email: e.target[5].value,
         celular: e.target[6].value,
+        password: resVivero.password,
       },
     };
     editVivero(data, urlid);
