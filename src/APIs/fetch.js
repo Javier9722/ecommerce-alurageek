@@ -49,3 +49,37 @@ export const editVivero = async (data, id) => {
     console.log(e);
   }
 };
+
+export const editProducts = async (data, id) => {
+  //obtener todos los productos
+  const viveroInfo = await getOneApi(id);
+  const allProductos = await viveroInfo.productos;
+  // convertir nuevos productos editado
+  const newProducts = allProductos.map((element) => {
+    if (element.id === data.id) {
+      return data;
+    }
+    return element;
+  });
+  // nueva data, acomodando a la estructura del objeto
+  let newData = {
+    productos: newProducts,
+  };
+  // enviar a la API
+  const dynamicUrl = `http://localhost:3001/viveros/${id}`;
+  const options = {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newData),
+  };
+  try {
+    const response = await fetch(dynamicUrl, options);
+    const result = await response.json();
+    console.log(result);
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  } catch (e) {
+    console.log(e);
+  }
+};
