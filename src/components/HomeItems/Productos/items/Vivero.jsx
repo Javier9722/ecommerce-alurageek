@@ -6,20 +6,17 @@ import { getOneViveroProducts } from "../../../../APIs/fetch";
 export const Vivero = ({
   vivero,
   setIsLoading,
-  countProducts,
-  setCountProducts,
+  existProducts,
+  setExistProducts,
 }) => {
   const [productos, setProductos] = useState([]);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const data = await getOneViveroProducts(vivero.id);
-        if (data.length === 0) {
-          setCountProducts(countProducts - 1);
-        } else {
-          setCountProducts(countProducts + data.length);
-        }
+        setCount(count + data.length);
         setProductos(data);
         setIsLoading(false);
       } catch (e) {
@@ -28,6 +25,14 @@ export const Vivero = ({
     };
     fetchProducts();
   }, []);
+  useEffect(() => {
+    // console.log(count);
+    if (count === 0 || count === NaN) {
+      setExistProducts(false);
+    } else {
+      setExistProducts(true);
+    }
+  }, [count]);
   let imagen = vivero.img;
   imagen == ""
     ? (imagen =

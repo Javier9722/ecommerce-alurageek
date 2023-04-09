@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { EditProduct } from "./productsItems/EditProduct";
 import { transition as t, hover as h } from "../../../ultilities/tailwind";
 import { TH, TR } from "./productsItems/List";
+import { CreateProduct } from "./productsItems/CreateProduct";
 
-export const ProductsAdmin = ({ id, dataProductos }) => {
-  const [formView, setFormView] = useState({
+export const ProductsAdmin = ({ idVivero, dataProductos }) => {
+  const [editFormView, setEditFormView] = useState({
     view: false,
     producto: undefined,
   });
+  const [createFormView, setCreateFormView] = useState(false);
   const sections = [
     "Nombre",
     "Descripción",
@@ -17,6 +19,9 @@ export const ProductsAdmin = ({ id, dataProductos }) => {
     "Imagen",
     "Acciones",
   ];
+  const openCreateForm = () => {
+    setCreateFormView(true);
+  };
   return (
     <div>
       <h1
@@ -26,6 +31,7 @@ export const ProductsAdmin = ({ id, dataProductos }) => {
       </h1>
       <button
         className={`mt-2 rounded-lg px-2 py-1 text-amber-500 bg-transparent hover:bg-amber-500 hover:text-amber-900 ${h}`}
+        onClick={openCreateForm}
       >
         <i className="fas fa-plus"></i> Productos
       </button>
@@ -39,7 +45,10 @@ export const ProductsAdmin = ({ id, dataProductos }) => {
                 </tr>
               </thead>
               <tbody className="">
-                <TR productos={dataProductos} setFormView={setFormView} />
+                <TR
+                  productos={dataProductos}
+                  setEditFormView={setEditFormView}
+                />
               </tbody>
             </table>
           </div>
@@ -47,11 +56,19 @@ export const ProductsAdmin = ({ id, dataProductos }) => {
           <span>No hay productos xd</span>
         )}
       </div>
-      {formView.view ? (
+      {editFormView.view ? (
         <EditProduct
-          idVivero={id}
-          producto={formView.producto}
-          setFormView={setFormView}
+          idVivero={idVivero}
+          producto={editFormView.producto}
+          setEditFormView={setEditFormView}
+        />
+      ) : (
+        <></>
+      )}
+      {createFormView ? (
+        <CreateProduct
+          idVivero={idVivero}
+          setCreateFormView={setCreateFormView}
         />
       ) : (
         <></>

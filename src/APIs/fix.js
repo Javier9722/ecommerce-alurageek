@@ -22,7 +22,6 @@ export const fixCreateCredenciales = (credenciales, id) => {
 export const fixCreateProductos = (id) => {
   const fixProductos = {
     viveroId: id,
-    productos: [],
   };
   return fixProductos;
 };

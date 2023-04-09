@@ -35,7 +35,7 @@ export const HomeAdmin = ({ id }) => {
         <></>
       )}
       {visibleItems.products ? (
-        <ProductsAdmin id={dataVivero.id} dataProductos={dataProductos} />
+        <ProductsAdmin idVivero={dataVivero.id} dataProductos={dataProductos} />
       ) : (
         <></>
       )}

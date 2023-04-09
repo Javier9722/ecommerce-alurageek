@@ -15,12 +15,12 @@ export const TH = ({ sections }) => {
   );
 };
 
-export const TR = ({ productos, setFormView }) => {
+export const TR = ({ productos, setEditFormView }) => {
   return (
     <>
       {productos.map((producto, id) => {
         const openForm = () => {
-          setFormView({
+          setEditFormView({
             view: true,
             producto: producto,
           });

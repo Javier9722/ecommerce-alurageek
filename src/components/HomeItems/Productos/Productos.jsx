@@ -7,12 +7,11 @@ import { Vivero } from "./items/Vivero";
 export const Productos = ({ viveros }) => {
   const [isRender, setIsRender] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [countProducts, setCountProducts] = useState(0);
+  const [existProducts, setExistProducts] = useState(true);
 
   useEffect(() => {
     setIsRender(true);
   }, []);
-
   return isRender ? (
     <div className="w-full px-4 lg:px-0 grid gap-4">
       <h1
@@ -28,8 +27,8 @@ export const Productos = ({ viveros }) => {
                 key={id}
                 vivero={vivero}
                 setIsLoading={setIsLoading}
-                countProducts={countProducts}
-                setCountProducts={setCountProducts}
+                existProducts={existProducts}
+                setExistProducts={setExistProducts}
               />
             );
           })
@@ -42,7 +41,7 @@ export const Productos = ({ viveros }) => {
           <></>
         )}
       </div>
-      {countProducts >= 0 ? (
+      {existProducts ? (
         <></>
       ) : (
         <h1 className={`text-center text-slate-300 dark:text-slate-600 ${t}`}>

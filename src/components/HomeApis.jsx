@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ReactLoading from "react-loading";
 import { Asociados } from "./HomeItems/Asociados/Asociados";
-import { getViveros, getProducts } from "../APIs/fetch";
+import { getViveros } from "../APIs/fetch";
 import { Productos } from "./HomeItems/Productos/Productos";
 import { transition as t } from "../ultilities/tailwind";
 

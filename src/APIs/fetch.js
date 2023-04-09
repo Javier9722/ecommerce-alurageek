@@ -38,8 +38,7 @@ export const getOneViveroProducts = async (id) => {
   const dynamicUrl = `http://localhost:3001/viveros/${id}/productos`;
   const response = await fetch(dynamicUrl);
   const data = await response.json();
-  const onlyProducts = await data[0].productos;
-  return onlyProducts;
+  return data;
 };
 
 export const getOneProducts = async (id) => {
@@ -79,17 +78,6 @@ export const crearVivero = async (vivero, credenciales) => {
     const resultCredenciales = await responseCredenciales.json();
     console.log(resultCredenciales);
     // fin creacion de credenciales
-    // creacion de productos
-    const fixProductos = fixCreateProductos(resultVivero.id);
-    const optionsProductos = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(fixProductos),
-    };
-    const responseProductos = await fetch(general.productos, optionsProductos);
-    const resultProductos = await responseProductos.json();
-    console.log(resultProductos);
-    // fin creacion de productos
     // agregando al storage
     const dataStorage = {
       id: resultVivero.id,
@@ -122,27 +110,30 @@ export const editVivero = async (data, id) => {
   }
 };
 
-export const editProducts = async (data, id) => {
-  //obtener todos los productos
-  const objectProductos = await getOneProducts(id);
-  const allProductos = await objectProductos.productos;
-  // convertir nuevos productos editado
-  const newProducts = allProductos.map((element) => {
-    if (element.id === data.id) {
-      return data;
-    }
-    return element;
-  });
-  // nueva data, acomodando a la estructura del objeto
-  let newData = {
-    productos: newProducts,
+export const crearProducto = async (data) => {
+  const options = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
   };
-  // enviar a la API
-  const dynamicUrl = `http://localhost:3001/productos/${id}`;
+  try {
+    const response = await fetch(general.productos, options);
+    const result = await response.json();
+    console.log(result);
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const editProducts = async (data) => {
+  const dynamicUrl = `http://localhost:3001/productos/${data.id}`;
   const options = {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(newData),
+    body: JSON.stringify(data),
   };
   try {
     const response = await fetch(dynamicUrl, options);

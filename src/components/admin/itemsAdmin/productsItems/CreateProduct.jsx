@@ -1,12 +1,12 @@
 import React from "react";
-import { editProducts } from "../../../../APIs/fetch";
+import { crearProducto } from "../../../../APIs/fetch";
 
-export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
+export const CreateProduct = ({ idVivero, setCreateFormView }) => {
   // console.log(producto);
   const edit = (e) => {
     e.preventDefault();
     const data = {
-      id: producto.id,
+      viveroId: idVivero,
       name: e.target[0].value,
       description: e.target[1].value,
       precio: e.target[2].value,
@@ -14,12 +14,10 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
       category: e.target[4].value,
       img: e.target[5].value,
     };
-    editProducts(data);
+    crearProducto(data);
   };
   const cancelButton = () => {
-    setEditFormView({
-      view: false,
-    });
+    setCreateFormView(false);
   };
   return (
     <div className="absolute top-0 left-0 w-full h-screen bg-slate-300/70 dark:bg-slate-900/70 backdrop-blur-sm grid place-items-center">
@@ -37,7 +35,6 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               id="nombre_producto"
               type="text"
               placeholder="Nombre del Producto"
-              defaultValue={producto.name}
             />
           </div>
           <div className="mb-4">
@@ -51,7 +48,6 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
               id="description"
               placeholder="Descripción del Producto"
-              defaultValue={producto.description}
             />
           </div>
           <div className="mb-4">
@@ -66,7 +62,6 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               id="precio"
               type="text"
               placeholder="Precio"
-              defaultValue={producto.precio}
             />
           </div>
           <div className="mb-4">
@@ -82,7 +77,6 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               type="text"
               placeholder="Stock"
               pattern="[0-9]+"
-              defaultValue={producto.stock}
             />
           </div>
           <div className="mb-4">
@@ -97,7 +91,6 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               id="category"
               type="text"
               placeholder="Categoria"
-              defaultValue={producto.category}
             />
           </div>
           <div className="mb-4">
@@ -112,7 +105,6 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               id="image"
               type="text"
               placeholder="Url de la Imagen"
-              defaultValue={producto.img}
             ></input>
           </div>
           <div className="flex items-center justify-between">
