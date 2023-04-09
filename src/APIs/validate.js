@@ -1,13 +1,13 @@
-import { getApi } from "./fetch";
+import { getCredentials } from "./fetch";
 
 const url = "http://localhost:3001/viveros";
 
 export const validLogin = async ({ email, password }) => {
-  const data = await getApi();
+  const data = await getCredentials();
   const result = await data.filter(
-    (vivero) =>
-      vivero.datos.email === email && vivero.datos.password === password
+    (acount) => acount.email === email && acount.password === password
   );
+
   if (result.length === 1) {
     const dataStorage = {
       id: result[0].id,

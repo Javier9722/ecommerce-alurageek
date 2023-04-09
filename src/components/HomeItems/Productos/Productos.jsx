@@ -4,12 +4,15 @@ import { transition as t } from "../../../ultilities/tailwind";
 
 import { Vivero } from "./items/Vivero";
 
-export const Productos = ({ data }) => {
+export const Productos = ({ viveros }) => {
   const [isRender, setIsRender] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [countProducts, setCountProducts] = useState(0);
 
   useEffect(() => {
     setIsRender(true);
   }, []);
+
   return isRender ? (
     <div className="w-full px-4 lg:px-0 grid gap-4">
       <h1
@@ -18,12 +21,34 @@ export const Productos = ({ data }) => {
         Productos
       </h1>
       <div className="grid gap-2">
-        {data.length !== 0 ? (
-          data.map((vivero, id) => <Vivero data={vivero} key={id} />)
+        {viveros.length !== 0 ? (
+          viveros.map((vivero, id) => {
+            return (
+              <Vivero
+                key={id}
+                vivero={vivero}
+                setIsLoading={setIsLoading}
+                countProducts={countProducts}
+                setCountProducts={setCountProducts}
+              />
+            );
+          })
         ) : (
+          <></>
+        )}
+        {isLoading ? (
           <ReactLoading type="cylon" color="#cccccc" height={100} width={100} />
+        ) : (
+          <></>
         )}
       </div>
+      {countProducts >= 0 ? (
+        <></>
+      ) : (
+        <h1 className={`text-center text-slate-300 dark:text-slate-600 ${t}`}>
+          No hay Productos
+        </h1>
+      )}
     </div>
   ) : (
     <></>

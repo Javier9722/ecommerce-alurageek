@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { transition as t } from "../../../ultilities/tailwind";
 import { Menu } from "./loggedItems/Menu";
 
-export const Logged = ({ data, setData }) => {
+export const Logged = ({ vivero, setVivero }) => {
   const [isVisible, setIsVisible] = useState(false);
-  let imagen = data.datos.img;
+  let imagen = vivero.img;
 
   imagen == ""
     ? (imagen =
@@ -26,11 +26,11 @@ export const Logged = ({ data, setData }) => {
             alt="logo"
             className="w-[19px] h-[19px] object-cover rounded-[50%]"
           />
-          <span className="hidden sm:block">{data.datos.name}</span>
+          <span className="hidden sm:block">{vivero.name}</span>
         </div>
       </div>
       {isVisible ? (
-        <Menu id={data.id} name={data.datos.name} setData={setData} />
+        <Menu id={vivero.id} name={vivero.name} setVivero={setVivero} />
       ) : (
         <></>
       )}

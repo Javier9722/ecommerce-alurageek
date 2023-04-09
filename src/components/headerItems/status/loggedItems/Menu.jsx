@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { transition as t } from "../../../../ultilities/tailwind";
-export const Menu = ({ id, name, setData }) => {
+export const Menu = ({ id, name, setVivero }) => {
   const [isRender, setIsRender] = useState(false);
   const unLogged = () => {
     localStorage.removeItem("status");
-    setData(null);
+    setVivero(null);
   };
   useEffect(() => {
     setIsRender(true);

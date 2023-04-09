@@ -25,15 +25,19 @@ export const RegVivero = ({ setIsForm }) => {
     const password = e.target[5].value;
     const direction = e.target[6].value;
 
-    const data = {
+    const vivero = {
       name: viveroName,
       direction: direction,
       dueno: name + " " + lname,
       email: email,
-      password: password,
       celular: phone,
     };
-    await crearVivero(data);
+    const credenciales = {
+      email: email,
+      password: password,
+    };
+
+    await crearVivero(vivero, credenciales);
   };
 
   return isRender ? (

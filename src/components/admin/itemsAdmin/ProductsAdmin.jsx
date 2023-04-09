@@ -3,7 +3,7 @@ import { EditProduct } from "./productsItems/EditProduct";
 import { transition as t, hover as h } from "../../../ultilities/tailwind";
 import { TH, TR } from "./productsItems/List";
 
-export const ProductsAdmin = ({ id, productos }) => {
+export const ProductsAdmin = ({ id, dataProductos }) => {
   const [formView, setFormView] = useState({
     view: false,
     producto: undefined,
@@ -30,7 +30,7 @@ export const ProductsAdmin = ({ id, productos }) => {
         <i className="fas fa-plus"></i> Productos
       </button>
       <div className="mt-4">
-        {productos.length !== 0 ? (
+        {dataProductos.length !== 0 ? (
           <div className="w-[inherit] overflow-x-auto box-border ">
             <table className="w-full max-w-[1240px] mx-auto">
               <thead className="">
@@ -39,7 +39,7 @@ export const ProductsAdmin = ({ id, productos }) => {
                 </tr>
               </thead>
               <tbody className="">
-                <TR productos={productos} setFormView={setFormView} />
+                <TR productos={dataProductos} setFormView={setFormView} />
               </tbody>
             </table>
           </div>

@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { HeaderAdmin } from "./itemsAdmin/HeaderAdmin";
 import ReactLoading from "react-loading";
-import { getOneApi } from "../../APIs/fetch";
+import { getOneViveroProducts, getOneVivero } from "../../APIs/fetch";
 import { ProductsAdmin } from "./itemsAdmin/ProductsAdmin";
 import { PerfilAdmin } from "./itemsAdmin/PerfilAdmin";
 
 export const HomeAdmin = ({ id }) => {
   const [isRender, setIsRender] = useState(false);
   const [dataVivero, setDataVivero] = useState({});
+  const [dataProductos, setDataProductos] = useState([]);
   const [visibleItems, setVisibleItems] = useState({
     perfil: false,
     products: true,
   });
   useEffect(() => {
     const viveros = async () => {
-      const data = await getOneApi(id);
-      if (data.id === id) {
-        setDataVivero(data);
+      const vivero = await getOneVivero(id);
+      const productos = await getOneViveroProducts(id);
+      if (vivero.id === id) {
+        setDataVivero(vivero);
+        setDataProductos(productos);
         setIsRender(true);
       }
     };
@@ -27,12 +30,12 @@ export const HomeAdmin = ({ id }) => {
     <div className="px-2 sm:px-0">
       <HeaderAdmin dataVivero={dataVivero} setVisibleItems={setVisibleItems} />
       {visibleItems.perfil ? (
-        <PerfilAdmin id={dataVivero.id} datos={dataVivero.datos} />
+        <PerfilAdmin id={dataVivero.id} datos={dataVivero} />
       ) : (
         <></>
       )}
       {visibleItems.products ? (
-        <ProductsAdmin id={dataVivero.id} productos={dataVivero.productos} />
+        <ProductsAdmin id={dataVivero.id} dataProductos={dataProductos} />
       ) : (
         <></>
       )}

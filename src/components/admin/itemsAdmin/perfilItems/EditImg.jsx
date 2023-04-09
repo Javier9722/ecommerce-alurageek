@@ -5,17 +5,7 @@ export const EditImg = ({ id, setFormView, datos }) => {
   const edit = (e) => {
     e.preventDefault();
     const data = {
-      datos: {
-        name: datos.name,
-        description: datos.description,
-        direction: datos.direction,
-        referencia: datos.referencia,
-        img: e.target[0].value,
-        dueno: datos.dueno,
-        email: datos.email,
-        celular: datos.celular,
-        password: datos.password,
-      },
+      img: e.target[0].value,
     };
     editVivero(data, id);
   };

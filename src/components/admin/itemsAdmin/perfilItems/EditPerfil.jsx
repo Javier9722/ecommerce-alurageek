@@ -6,17 +6,13 @@ export const EditPerfil = ({ id, setFormView, datos }) => {
     e.preventDefault();
 
     const data = {
-      datos: {
-        name: e.target[0].value,
-        description: e.target[1].value,
-        direction: e.target[2].value,
-        referencia: e.target[3].value,
-        img: datos.img,
-        dueno: e.target[4].value,
-        email: e.target[5].value,
-        celular: e.target[6].value,
-        password: datos.password,
-      },
+      name: e.target[0].value,
+      description: e.target[1].value,
+      direction: e.target[2].value,
+      referencia: e.target[3].value,
+      dueno: e.target[4].value,
+      email: datos.email,
+      celular: e.target[6].value,
     };
     editVivero(data, id);
   };
@@ -115,6 +111,7 @@ export const EditPerfil = ({ id, setFormView, datos }) => {
               type="email"
               placeholder="Correo Electronico"
               defaultValue={datos.email}
+              readOnly
             ></input>
           </div>
           <div className="mb-4">

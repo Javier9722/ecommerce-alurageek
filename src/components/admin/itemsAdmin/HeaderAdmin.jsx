@@ -29,7 +29,7 @@ export const HeaderAdmin = ({ dataVivero, setVisibleItems }) => {
       <div className="flex gap-2 items-center">
         <ThemeToggle themeParent={[themeParent, setThemeParent]} />
         <h1 className={`text-slate-600 dark:text-slate-300 text-[1.3rem] ${t}`}>
-          {dataVivero.datos.name}
+          {dataVivero.name}
         </h1>
       </div>
 

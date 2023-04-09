@@ -10,12 +10,12 @@ export const Login = ({ setIsForm }) => {
 
   const auth = async (e) => {
     e.preventDefault();
+
     const credentials = {
       email: e.target[0].value,
       password: e.target[1].value,
     };
     const result = await validLogin(credentials);
-
     if (result) {
       setMessage("Success");
       setTimeout(() => {
