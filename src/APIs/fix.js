@@ -7,7 +7,7 @@ export const fixCreateVivero = (vivero) => {
     img: "",
     dueno: vivero.dueno,
     email: vivero.email,
-    celular: vivero.phone,
+    celular: vivero.celular,
   };
   return fixVivero;
 };

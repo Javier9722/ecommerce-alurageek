@@ -57,35 +57,30 @@ export const crearVivero = async (vivero, credenciales) => {
   };
 
   try {
-    const responseVivero = await fetch(general.viveros, optionsVivero);
-    const resultVivero = await responseVivero.json();
-    console.log(resultVivero);
-    // creacion de credenciales en relacion al id del result
-    const fixCredenciales = fixCreateCredenciales(
-      credenciales,
-      resultVivero.id
-    );
-
-    const optionsCredenciales = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(fixCredenciales),
-    };
-    const responseCredenciales = await fetch(
-      general.credenciales,
-      optionsCredenciales
-    );
-    const resultCredenciales = await responseCredenciales.json();
-    console.log(resultCredenciales);
-    // fin creacion de credenciales
-    // agregando al storage
-    const dataStorage = {
-      id: resultVivero.id,
-    };
-    localStorage.setItem("status", JSON.stringify(dataStorage));
-    setTimeout(() => {
-      window.location.replace("http://localhost:3000/");
-    }, 2000);
+    await fetch(general.viveros, optionsVivero)
+      .then((r) => r.json())
+      .then((e) => {
+        console.log(e);
+        const dataStorage = {
+          id: e.id,
+        };
+        localStorage.setItem("status", JSON.stringify(dataStorage));
+        return e;
+      })
+      .then((e) => fixCreateCredenciales(credenciales, e.id))
+      .then((fixCredenciales) => {
+        let optionsCredenciales = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(fixCredenciales),
+        };
+        return optionsCredenciales;
+      })
+      .then(async (optionsCredenciales) => {
+        await fetch(general.credenciales, optionsCredenciales).then(() =>
+          window.location.replace("http://localhost:3000/")
+        );
+      });
   } catch (e) {
     console.log(e);
   }
@@ -99,12 +94,10 @@ export const editVivero = async (data, id) => {
     body: JSON.stringify(data),
   };
   try {
-    const response = await fetch(dynamicUrl, options);
-    const result = await response.json();
-    console.log(result);
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
+    await fetch(dynamicUrl, options)
+      .then((r) => r.json())
+      .then((e) => console.log(e))
+      .then(() => window.location.reload());
   } catch (e) {
     console.log(e);
   }
@@ -117,12 +110,10 @@ export const crearProducto = async (data) => {
     body: JSON.stringify(data),
   };
   try {
-    const response = await fetch(general.productos, options);
-    const result = await response.json();
-    console.log(result);
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
+    await fetch(general.productos, options)
+      .then((r) => r.json())
+      .then((e) => console.log(e))
+      .then(() => window.location.reload());
   } catch (e) {
     console.log(e);
   }
@@ -136,12 +127,22 @@ export const editProducts = async (data) => {
     body: JSON.stringify(data),
   };
   try {
-    const response = await fetch(dynamicUrl, options);
-    const result = await response.json();
-    console.log(result);
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
+    await fetch(dynamicUrl, options)
+      .then((r) => r.json())
+      .then((e) => console.log(e))
+      .then(() => window.location.reload());
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const deleteProducts = async (idProducto) => {
+  const dynamicUrl = `http://localhost:3001/productos/${idProducto}`;
+  const options = {
+    method: "DELETE",
+  };
+  try {
+    await fetch(dynamicUrl, options).then(() => window.location.reload());
   } catch (e) {
     console.log(e);
   }
