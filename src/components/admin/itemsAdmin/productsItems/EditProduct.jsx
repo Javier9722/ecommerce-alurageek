@@ -7,11 +7,26 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
     e.preventDefault();
     const data = {
       id: producto.id,
-      name: e.target[0].value,
-      description: e.target[1].value,
-      precio: e.target[2].value,
-      stock: e.target[3].value,
-      category: e.target[4].value,
+      name:
+        e.target[0].value === "" || e.target[0].value === " "
+          ? "N.A."
+          : e.target[0].value,
+      description:
+        e.target[1].value === "" || e.target[1].value === " "
+          ? "N.A."
+          : e.target[1].value,
+      precio:
+        e.target[2].value === "" || e.target[2].value === " "
+          ? "N.A."
+          : e.target[2].value,
+      stock:
+        e.target[3].value === "" || e.target[3].value === " "
+          ? "N.A."
+          : e.target[3].value,
+      category:
+        e.target[4].value === "" || e.target[4].value === " "
+          ? "N.A."
+          : e.target[4].value,
       img: e.target[5].value,
     };
     editProducts(data);
@@ -33,7 +48,7 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               Nombre del Producto
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="nombre_producto"
               type="text"
               placeholder="Nombre del Producto"
@@ -48,7 +63,7 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               Descripción del Producto
             </label>
             <textarea
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="description"
               placeholder="Descripción del Producto"
               defaultValue={producto.description}
@@ -62,7 +77,7 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               Precio
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="precio"
               type="text"
               placeholder="Precio"
@@ -77,7 +92,7 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               Stock
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="stock"
               type="text"
               placeholder="Stock"
@@ -93,7 +108,7 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               Categoria
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="category"
               type="text"
               placeholder="Categoria"
@@ -108,7 +123,7 @@ export const EditProduct = ({ idVivero, producto, setEditFormView }) => {
               Imagen
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="image"
               type="text"
               placeholder="Url de la Imagen"

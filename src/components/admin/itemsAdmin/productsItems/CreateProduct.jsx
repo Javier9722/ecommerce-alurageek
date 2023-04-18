@@ -7,11 +7,26 @@ export const CreateProduct = ({ idVivero, setCreateFormView }) => {
     e.preventDefault();
     const data = {
       viveroId: idVivero,
-      name: e.target[0].value,
-      description: e.target[1].value,
-      precio: e.target[2].value,
-      stock: e.target[3].value,
-      category: e.target[4].value,
+      name:
+        e.target[0].value === "" || e.target[0].value === " "
+          ? "N.A."
+          : e.target[0].value,
+      description:
+        e.target[1].value === "" || e.target[1].value === " "
+          ? "N.A."
+          : e.target[1].value,
+      precio:
+        e.target[2].value === "" || e.target[2].value === " "
+          ? "N.A."
+          : e.target[2].value,
+      stock:
+        e.target[3].value === "" || e.target[3].value === " "
+          ? "N.A."
+          : e.target[3].value,
+      category:
+        e.target[4].value === "" || e.target[4].value === " "
+          ? "N.A."
+          : e.target[4].value,
       img: e.target[5].value,
     };
     crearProducto(data);
@@ -31,7 +46,7 @@ export const CreateProduct = ({ idVivero, setCreateFormView }) => {
               Nombre del Producto
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="nombre_producto"
               type="text"
               placeholder="Nombre del Producto"
@@ -45,7 +60,7 @@ export const CreateProduct = ({ idVivero, setCreateFormView }) => {
               Descripción del Producto
             </label>
             <textarea
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="description"
               placeholder="Descripción del Producto"
             />
@@ -58,7 +73,7 @@ export const CreateProduct = ({ idVivero, setCreateFormView }) => {
               Precio
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="precio"
               type="text"
               placeholder="Precio"
@@ -72,7 +87,7 @@ export const CreateProduct = ({ idVivero, setCreateFormView }) => {
               Stock
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="stock"
               type="text"
               placeholder="Stock"
@@ -87,7 +102,7 @@ export const CreateProduct = ({ idVivero, setCreateFormView }) => {
               Categoria
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="category"
               type="text"
               placeholder="Categoria"
@@ -101,7 +116,7 @@ export const CreateProduct = ({ idVivero, setCreateFormView }) => {
               Imagen
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="image"
               type="text"
               placeholder="Url de la Imagen"
@@ -112,7 +127,7 @@ export const CreateProduct = ({ idVivero, setCreateFormView }) => {
               className="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Editar
+              Crear
             </button>
             <button
               className="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

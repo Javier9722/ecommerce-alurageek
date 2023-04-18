@@ -32,7 +32,7 @@ export const EditPerfil = ({ id, setFormView, datos }) => {
               Nombre del Vivero
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="nombre_vivero"
               type="text"
               placeholder="Nombre del Vivero"
@@ -47,7 +47,7 @@ export const EditPerfil = ({ id, setFormView, datos }) => {
               Descripción
             </label>
             <textarea
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="description"
               placeholder="Nombre"
               defaultValue={datos.description}
@@ -61,7 +61,7 @@ export const EditPerfil = ({ id, setFormView, datos }) => {
               Dirección
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="direction"
               type="text"
               placeholder="Dirección"
@@ -76,7 +76,7 @@ export const EditPerfil = ({ id, setFormView, datos }) => {
               Referencia
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="referencia"
               type="text"
               placeholder="Referencia"
@@ -91,7 +91,7 @@ export const EditPerfil = ({ id, setFormView, datos }) => {
               Dueño
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="dueno"
               type="text"
               placeholder="name"
@@ -106,7 +106,7 @@ export const EditPerfil = ({ id, setFormView, datos }) => {
               Correo
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="email"
               type="email"
               placeholder="Correo Electronico"
@@ -122,7 +122,7 @@ export const EditPerfil = ({ id, setFormView, datos }) => {
               Numero de Celular
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="celular"
               type="text"
               placeholder="Numero de Contacto"

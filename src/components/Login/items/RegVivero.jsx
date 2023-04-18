@@ -65,6 +65,7 @@ export const RegVivero = ({ setIsForm }) => {
             id="nombre_vivero"
             type="text"
             placeholder="Nombre del Vivero"
+            required
           />
         </div>
         <div className="mb-4">
@@ -79,6 +80,7 @@ export const RegVivero = ({ setIsForm }) => {
             id="nombre"
             type="text"
             placeholder="Nombre"
+            required
           />
         </div>
         <div className="mb-4">
@@ -93,6 +95,7 @@ export const RegVivero = ({ setIsForm }) => {
             id="apellidos"
             type="text"
             placeholder="Apellidos"
+            required
           />
         </div>
         <div className="mb-4">
@@ -107,6 +110,7 @@ export const RegVivero = ({ setIsForm }) => {
             id="telefono"
             type="text"
             placeholder="Teléfono de Contacto"
+            required
           />
         </div>
         <div className="mb-4">
@@ -121,6 +125,7 @@ export const RegVivero = ({ setIsForm }) => {
             id="email"
             type="email"
             placeholder="example@example.com"
+            required
           />
         </div>
         <div className="mb-4">
@@ -135,6 +140,7 @@ export const RegVivero = ({ setIsForm }) => {
             id="password"
             type="password"
             placeholder="******"
+            required
           />
         </div>
         <div className="mb-4">
@@ -148,6 +154,7 @@ export const RegVivero = ({ setIsForm }) => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="direccion"
             placeholder="Dirección"
+            required
           ></textarea>
         </div>
         <div className="flex items-center justify-between">

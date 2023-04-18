@@ -3,13 +3,18 @@ import { EditProduct } from "./productsItems/EditProduct";
 import { transition as t, hover as h } from "../../../ultilities/tailwind";
 import { TH, TR } from "./productsItems/List";
 import { CreateProduct } from "./productsItems/CreateProduct";
+import { DeleteProduct } from "./productsItems/DeleteProduct";
 
 export const ProductsAdmin = ({ idVivero, dataProductos }) => {
+  const [createFormView, setCreateFormView] = useState(false);
   const [editFormView, setEditFormView] = useState({
     view: false,
     producto: undefined,
   });
-  const [createFormView, setCreateFormView] = useState(false);
+  const [confirmDeleteView, setConfirmDeleteView] = useState({
+    view: false,
+    producto: undefined,
+  });
   const sections = [
     "Nombre",
     "Descripción",
@@ -48,6 +53,7 @@ export const ProductsAdmin = ({ idVivero, dataProductos }) => {
                 <TR
                   productos={dataProductos}
                   setEditFormView={setEditFormView}
+                  setConfirmDeleteView={setConfirmDeleteView}
                 />
               </tbody>
             </table>
@@ -69,6 +75,14 @@ export const ProductsAdmin = ({ idVivero, dataProductos }) => {
         <CreateProduct
           idVivero={idVivero}
           setCreateFormView={setCreateFormView}
+        />
+      ) : (
+        <></>
+      )}
+      {confirmDeleteView.view ? (
+        <DeleteProduct
+          producto={confirmDeleteView.producto}
+          setConfirmDeleteView={setConfirmDeleteView}
         />
       ) : (
         <></>

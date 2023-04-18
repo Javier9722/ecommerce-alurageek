@@ -15,7 +15,7 @@ export const TH = ({ sections }) => {
   );
 };
 
-export const TR = ({ productos, setEditFormView }) => {
+export const TR = ({ productos, setEditFormView, setConfirmDeleteView }) => {
   return (
     <>
       {productos.map((producto, id) => {
@@ -25,6 +25,14 @@ export const TR = ({ productos, setEditFormView }) => {
             producto: producto,
           });
         };
+        const openConfirm = () => {
+          setConfirmDeleteView({
+            view: true,
+            producto: producto,
+          });
+        };
+        const defaultIMG =
+          "https://images.pexels.com/photos/3683107/pexels-photo-3683107.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
         return (
           <tr key={id} className="">
             <TD type={"text"} value={producto.name} />
@@ -32,7 +40,15 @@ export const TR = ({ productos, setEditFormView }) => {
             <TD type={"text"} value={producto.precio} />
             <TD type={"text"} value={producto.stock} />
             <TD type={"text"} value={producto.category} />
-            <TD type={"img"} value={producto.img} name={producto.name} />
+            <TD
+              type={"img"}
+              value={
+                producto.img === "" || producto.img === " "
+                  ? defaultIMG
+                  : producto.img
+              }
+              name={producto.name}
+            />
             <td
               className={`border-l-2 border-t-2 border-b-2 border-slate-200 dark:border-slate-800 px-4 py-2 ${t}`}
             >
@@ -45,6 +61,7 @@ export const TR = ({ productos, setEditFormView }) => {
                 </button>
                 <button
                   className={`bg-rose-500 hover:bg-rose-700 dark:bg-rose-700 dark:hover:bg-rose-900 text-white font-bold py-1 px-2 rounded ${h}`}
+                  onClick={openConfirm}
                 >
                   <i className="far fa-trash"></i>
                 </button>

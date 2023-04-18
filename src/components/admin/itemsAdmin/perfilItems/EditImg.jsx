@@ -28,7 +28,7 @@ export const EditImg = ({ id, setFormView, datos }) => {
               Logo de la empresa
             </label>
             <input
-              className="rounded w-full py-2 px-3 text-slate-300 focus:outline-none bg-white/20"
+              className="rounded w-full py-2 px-3 text-slate-500 dark:text-slate-300 focus:outline-none bg-white/20"
               id="nombre_vivero"
               type="text"
               placeholder="Logo de la empresa"

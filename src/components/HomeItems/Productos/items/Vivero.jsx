@@ -27,7 +27,7 @@ export const Vivero = ({
   }, []);
   useEffect(() => {
     // console.log(count);
-    if (count === 0 || count === NaN) {
+    if (count === 0) {
       setExistProducts(false);
     } else {
       setExistProducts(true);
