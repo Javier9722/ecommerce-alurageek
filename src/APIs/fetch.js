@@ -78,7 +78,9 @@ export const crearVivero = async (vivero, credenciales) => {
       })
       .then(async (optionsCredenciales) => {
         await fetch(general.credenciales, optionsCredenciales).then(() =>
-          window.location.replace("http://localhost:3000/")
+          window.location.replace(
+            "https://javier9722.github.io/ecommerce-alurageek/"
+          )
         );
       });
   } catch (e) {

@@ -18,7 +18,7 @@ export const Menu = ({ id, name, setVivero }) => {
     <div
       className={`w-max absolute z-10 top-[60px] right-0 lg:right-auto grid gap-1 py-4 px-2 backdrop-blur-md rounded-lg text-slate-900 dark:text-slate-300 bg-slate-300/10 dark:bg-slate-800/50 ${t}`}
     >
-      <a href={`admin/${rute}?id=${id}`}>
+      <a href={`/ecommerce-alurageek/admin/${rute}?id=${id}`}>
         <span className="hover:text-amber-600">Productos</span>
       </a>
       <span
