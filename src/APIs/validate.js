@@ -4,15 +4,15 @@ const url = "http://localhost:3001/viveros";
 
 export const validLogin = async ({ email, password }) => {
   const data = await getCredentials();
-  const result = await data.filter(
+  const result = await data.find(
     (acount) => acount.email === email && acount.password === password
   );
 
-  if (result.length === 1) {
+  if (result) {
     const dataStorage = {
-      id: result[0].id,
+      id: result.id,
     };
     localStorage.setItem("status", JSON.stringify(dataStorage));
   }
-  return result.length === 1 ? true : false;
+  return result;
 };
