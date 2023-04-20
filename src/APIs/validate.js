@@ -1,6 +1,6 @@
 import { getCredentials } from "./fetch";
 
-const url = "http://localhost:3001/viveros";
+const url = "https://server-alurageek.onrender.com/viveros";
 
 export const validLogin = async ({ email, password }) => {
   const data = await getCredentials();

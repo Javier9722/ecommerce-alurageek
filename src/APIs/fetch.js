@@ -5,9 +5,9 @@ import {
 } from "./fix";
 
 const general = {
-  viveros: "http://localhost:3001/viveros",
-  productos: "http://localhost:3001/productos",
-  credenciales: "http://localhost:3001/credenciales",
+  viveros: "https://server-alurageek.onrender.com/viveros",
+  productos: "https://server-alurageek.onrender.com/productos",
+  credenciales: "https://server-alurageek.onrender.com/credenciales",
 };
 
 export const getViveros = async () => {
@@ -28,21 +28,21 @@ export const getCredentials = async () => {
   return data;
 };
 export const getOneVivero = async (id) => {
-  const dynamicUrl = `http://localhost:3001/viveros/${id}`;
+  const dynamicUrl = `https://server-alurageek.onrender.com/viveros/${id}`;
   const response = await fetch(dynamicUrl);
   const data = await response.json();
   return data;
 };
 
 export const getOneViveroProducts = async (id) => {
-  const dynamicUrl = `http://localhost:3001/viveros/${id}/productos`;
+  const dynamicUrl = `https://server-alurageek.onrender.com/viveros/${id}/productos`;
   const response = await fetch(dynamicUrl);
   const data = await response.json();
   return data;
 };
 
 export const getOneProducts = async (id) => {
-  const dynamicUrl = `http://localhost:3001/productos/${id}`;
+  const dynamicUrl = `https://server-alurageek.onrender.com/productos/${id}`;
   const response = await fetch(dynamicUrl);
   const data = await response.json();
   return data;
@@ -87,7 +87,7 @@ export const crearVivero = async (vivero, credenciales) => {
 };
 
 export const editVivero = async (data, id) => {
-  const dynamicUrl = `http://localhost:3001/viveros/${id}`;
+  const dynamicUrl = `https://server-alurageek.onrender.com/viveros/${id}`;
   const options = {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
@@ -120,7 +120,7 @@ export const crearProducto = async (data) => {
 };
 
 export const editProducts = async (data) => {
-  const dynamicUrl = `http://localhost:3001/productos/${data.id}`;
+  const dynamicUrl = `https://server-alurageek.onrender.com/productos/${data.id}`;
   const options = {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
@@ -137,7 +137,7 @@ export const editProducts = async (data) => {
 };
 
 export const deleteProducts = async (idProducto) => {
-  const dynamicUrl = `http://localhost:3001/productos/${idProducto}`;
+  const dynamicUrl = `https://server-alurageek.onrender.com/productos/${idProducto}`;
   const options = {
     method: "DELETE",
   };
