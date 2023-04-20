@@ -7,6 +7,5 @@ import react from "@astrojs/react";
 export default defineConfig({
   site: "https://javier9722.github.io",
   base: "/ecommerce-alurageek",
-  output: "server",
   integrations: [tailwind(), react()],
 });
