@@ -1,23 +1,16 @@
 import React from "react";
-import { Player } from "@lottiefiles/react-lottie-player";
+import Lottie from "lottie-react";
+import garden from "./garden.json";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.player = React.createRef(); // initialize your ref
-  }
-  render() {
-    return (
-      <Player
-        ref={this.player} // set the ref to your class instance
-        autoplay={true}
-        loop={true}
-        controls={true}
-        src="https://assets7.lottiefiles.com/packages/lf20_o6hQ8m.json"
-        className="w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] rounded-xl"
-      ></Player>
-    );
-  }
-}
+const App = () => {
+  return (
+    // <div className="w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] rounded-xl overflow-hidden border border-red-300"></div>
+    <Lottie
+      animationData={garden}
+      loop={true}
+      className="shrink-0 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] rounded-xl overflow-hidden border border-red-300"
+    />
+  );
+};
 
 export default App;
