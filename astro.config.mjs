@@ -1,11 +1,12 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-
 import react from "@astrojs/react";
+
+import deno from "@astrojs/deno";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://javier9722.github.io",
-  base: "/ecommerce-alurageek",
+  output: "server",
   integrations: [tailwind(), react()],
+  adapter: deno(),
 });
