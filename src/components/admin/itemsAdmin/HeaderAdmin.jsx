@@ -12,9 +12,7 @@ export const HeaderAdmin = ({ dataVivero, setVisibleItems }) => {
 
   const unlogged = () => {
     localStorage.removeItem("status");
-    window.location.replace(
-      "https://javier9722.github.io/ecommerce-alurageek/"
-    );
+    window.location.replace("https://ecommerce-alurageek.deno.dev/");
   };
 
   const renderPerfil = () => {

@@ -19,9 +19,7 @@ export const Login = ({ setIsForm }) => {
     if (result) {
       setMessage("Success");
       setTimeout(() => {
-        window.location.replace(
-          "https://javier9722.github.io/ecommerce-alurageek/"
-        );
+        window.location.replace("https://ecommerce-alurageek.deno.dev/");
       }, 2000);
     } else {
       setMessage("Error, verifique sus credenciales");
